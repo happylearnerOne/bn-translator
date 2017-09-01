@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { AddTranslatorService } from './add-translator.service';
+import { SharedService } from '../share.service';
 
 
 @Component({
@@ -13,7 +15,9 @@ export class AddTranslatorComponent implements OnInit {
 	addform : FormGroup;
 	
   constructor(fb: FormBuilder,
-  						private addTranslatorService : AddTranslatorService) { 
+  						private addTranslatorService : AddTranslatorService,
+              private shareService : SharedService,
+              private router : Router) { 
   	this.addform = fb.group({
   		'name' : [],
   		'skype' : [],
@@ -45,6 +49,10 @@ export class AddTranslatorComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(!this.shareService.loginSuccess){
+      alert("請登入");
+      this.router.navigate(['/login']);
+    }
   }
 
   onSubmit(form: any){

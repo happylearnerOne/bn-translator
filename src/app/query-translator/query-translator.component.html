@@ -1,12 +1,32 @@
-<div class="ui form">
-	<!--
-	<div class="ui text container">
-		<h4 class="ui dividing header">Search Condition</h4>
-		<form class="ui form" [formGroup]="queryform" (ngSubmit)="onSubmit(queryform.value)">
-			
-		</form>
-	</div>
-	-->
-
-
-</div>
+<table class="ui celled table">
+  <thead>
+    <tr>
+    	<th>Name</th>
+    	<th>Address</th>
+    	<th>Prof. field</th>
+  	</tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tr of translators">
+      <td>{{tr.name}}</td>
+      <td>{{tr.address}}</td>
+      <td>{{tr.prof_field}}</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr><th colspan="3">
+      <div class="ui right floated pagination menu">
+        <a class="icon item">
+          <i class="left chevron icon"></i>
+        </a>
+        <a class="item">1</a>
+        <a class="item">2</a>
+        <a class="item">3</a>
+        <a class="item">4</a>
+        <a class="icon item">
+          <i class="right chevron icon"></i>
+        </a>
+      </div>
+    </th>
+  </tr></tfoot>
+</table>
